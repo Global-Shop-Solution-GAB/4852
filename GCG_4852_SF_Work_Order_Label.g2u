@@ -1,0 +1,219 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iBIRunID.Declare(Long,-1)
+Variable.Global.iBILogID.Declare(Long,-1)
+Variable.UDT.uWorkOrder.Define("BIRUNID",Long,"RUNID")
+Variable.UDT.uWorkOrder.Define("WO",String,"WO")
+Variable.UDT.uWorkOrder.Define("WO_SUFFIX",String,"WO_SUFFIX")
+Variable.UDT.uWorkOrder.Define("SEQ",String,"SEQ")
+Variable.UDT.uWorkOrder.Define("QTY_ON_LABEL",Float,"QTY_ON_LABEL")
+Variable.UDT.uWorkOrder.Define("LBL_CREATE_DATE",Date,"LBL_CREATE_DATE")
+Variable.UDT.uWorkOrder.Define("PART",String,"PART")
+Variable.UDT.uWorkOrder.Define("REV",String,"REV")
+Variable.UDT.uWorkOrder.Define("LOCN",String,"LOCN")
+Variable.UDT.uWorkOrder.Define("QTY_ON_ORDER",Float,"QTY_ON_ORDER")
+Variable.UDT.uWorkOrder.Define("DESCR",String,"DESCR")
+Variable.UDT.uWorkOrder.Define("INV_UM",String,"INV_UM")
+Variable.UDT.uWorkOrder.Define("DRAWING",String,"DRAWING")
+Variable.UDT.uWorkOrder.Define("CUSTOMER",String,"CUSTOMER_NBR")
+Variable.UDT.uWorkOrder.Define("CUSTOMER_NAME",String,"CUSTOMER_NAME")
+Variable.UDT.uWorkOrder.Define("CUSTOMER_PO",String,"CUSTOMER_PO")
+Variable.UDT.uWorkOrder.Define("CUSTOMER_PART",String,"CUSTOMER_PART")
+Variable.UDT.uWorkOrder.Define("PROM_DATE",Date,"PROM_DATE")
+Variable.UDT.uWorkOrder.Define("SO",String,"SO")
+Variable.UDT.uWorkOrder.Define("SO_LINE",String,"SO_LINE")
+Variable.UDT.uWorkOrder.Define("SHIP_ID",String,"SHIP_ID")
+Variable.UDT.uWorkOrder.Define("QTY_ORDERED",Float,"QTY_ORDERED")
+Variable.UDT.uWorkOrder.Define("QTY_SHIPPED",Float,"QTY_SHIPPED")
+Variable.UDT.uWorkOrder.Define("QTY_BO",Float,"QTY_BO")
+Variable.UDT.uWorkOrder.Define("WEIGHT",Float,"WEIGHT")
+Variable.UDT.uWorkOrder.Define("LN_PRICE",Float,"LN_PRICE")
+Variable.UDT.uWorkOrder.Define("LN_COST",Float,"LN_COST")
+Variable.UDT.uWorkOrder.Define("LN_DISCOUNT_PRICE",Float,"LN_DISCOUNT_PRICE")
+Variable.UDT.uWorkOrder.Define("SHIP_INTL_ADDRS",String,"SHIP_INTL_ADDRS")
+Variable.UDT.uWorkOrder.Define("SHIP_NAME",String,"SHIP_NAME")
+Variable.UDT.uWorkOrder.Define("SHIP_ADDRS1",String,"SHIP_ADDRS1")
+Variable.UDT.uWorkOrder.Define("SHIP_ADDRS2",String,"SHIP_ADDRS2")
+Variable.UDT.uWorkOrder.Define("SHIP_ADDRS3",String,"SHIP_ADDRS3")
+Variable.UDT.uWorkOrder.Define("SHIP_ADDRS4",String,"SHIP_ADDRS4")
+Variable.UDT.uWorkOrder.Define("SHIP_ADDRS5",String,"SHIP_ADDRS5")
+Variable.UDT.uWorkOrder.Define("SHIP_CITY",String,"SHIP_CITY")
+Variable.UDT.uWorkOrder.Define("SHIP_STATE",String,"SHIP_STATE")
+Variable.UDT.uWorkOrder.Define("SHIP_ZIP",String,"SHIP_ZIP")
+Variable.UDT.uWorkOrder.Define("SHIP_COUNTRY",String,"SHIP_COUNTRY")
+Variable.UDT.uWorkOrder.Define("SHIP_ATTN",String,"SHIP_ATTN")
+Variable.UDT.uWorkOrder.Define("OH_USER1",String,"OH_USER1")
+Variable.UDT.uWorkOrder.Define("OH_USER2",String,"OH_USER2")
+Variable.UDT.uWorkOrder.Define("OH_USER3",String,"OH_USER3")
+Variable.UDT.uWorkOrder.Define("OH_USER4",String,"OH_USER4")
+Variable.UDT.uWorkOrder.Define("OH_USER5",String,"OH_USER5")
+Variable.UDT.uWorkOrder.Define("OL_USER1",String,"OL_USER1")
+Variable.UDT.uWorkOrder.Define("OL_USER2",String,"OL_USER2")
+Variable.UDT.uWorkOrder.Define("OL_USER3",String,"OL_USER3")
+Variable.UDT.uWorkOrder.Define("OL_USER4",String,"OL_USER4")
+Variable.UDT.uWorkOrder.Define("OL_USER5",String,"OL_USER5")
+Variable.UDT.uWorkOrder.Define("DATE1",Date,"DATE1")
+Variable.UDT.uWorkOrder.Define("DATE2",Date,"DATE2")
+Variable.UDT.uWorkOrder.Define("BATCH1",String,"BATCH1")
+Variable.UDT.uWorkOrder.Define("BATCH2",String,"BATCH2")
+Variable.UDT.uWorkOrder.Define("SHIP_DATE",Date,"SHIP_DATE")
+Variable.UDT.uWorkOrder.Define("COMMENT1",String,"COMMENT1")
+Variable.UDT.uWorkOrder.Define("COMMENT2",String,"COMMENT2")
+Variable.UDT.uWorkOrder.Define("COMMENT3",String,"COMMENT3")
+Variable.UDT.uWorkOrder.Define("COMMENT4",String,"COMMENT4")
+Variable.UDT.uWorkOrder.Define("COMMENT5",String,"COMMENT5")
+Variable.UDT.uWorkOrder.Define("BATCH1_TITLE",String,"BATCH1_TITLE")
+Variable.UDT.uWorkOrder.Define("BATCH2_TITLE",String,"BATCH2_TITLE")
+Variable.UDT.uWorkOrder.Define("DATE1_TITLE",String,"DATE1_TITLE")
+Variable.UDT.uWorkOrder.Define("DATE2_TITLE",String,"DATE2_TITLE")
+Variable.UDT.uWorkOrder.Define("COMMENT1_TITLE",String,"COMMENT1_TITLE")
+Variable.UDT.uWorkOrder.Define("COMMENT2_TITLE",String,"COMMENT2_TITLE")
+Variable.UDT.uWorkOrder.Define("COMMENT3_TITLE",String,"COMMENT3_TITLE")
+Variable.UDT.uWorkOrder.Define("COMMENT4_TITLE",String,"COMMENT4_TITLE")
+Variable.UDT.uWorkOrder.Define("COMMENT5_TITLE",String,"COMMENT5_TITLE")
+Variable.UDT.uWorkOrder.Define("C_EXTERNAL_ID",String,"C_EXTERNAL_ID")
+Variable.UDT.uWorkOrder.Define("ALT_DESC_1",String,"ALT_DESC_1")
+Variable.UDT.uWorkOrder.Define("ALT_DESC_2",String,"ALT_DESC_2")
+Variable.UDT.uWorkOrder.Define("serial_start",String,"serial_start")
+Variable.uGlobal.uWorkOrder.Declare("uWorkOrder")
+Variable.Global.bSentinel.Declare(Boolean,False)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Loaddata)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+    Function.Intrinsic.String.Concat("Project: BIR_SF_Work_Order_Label.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+    Function.Intrinsic.String.Concat("Project: BIR_SF_Work_Order_Label.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.End
+
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Unload.End
+
+Program.Sub.LoadData.Start
+F.Intrinsic.Control.SetErrorHandler("LoadData_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.iUB.Declare(Long)
+
+'Getting run ID passed down
+V.Global.iBIRunID.Set(V.Passed.DATA-GAB-0)
+'Getting log ID passed down
+V.Global.iBILogID.Set(V.Passed.DATA-GAB-1)
+'Getting Sentinel flag passed down
+Variable.Global.bSentinel.Set(Variable.Passed.DATA-GAB-2)
+
+V.uGlobal.uWorkOrder.Redim(-1,-1)
+
+'Loading data from Y table, as being label being printed from Menu, Selecting all fields as all fields are transferred over from Y table to Z table
+'F.Intrinsic.String.Build("Select * From Y_SF_WORKORD where RUNID = {0}",V.Global.iBIRunID,V.Local.sSql)
+'
+'Select  Y_SF_WORKORD.*,serial_start From Y_SF_WORKORD  join v_JOB_SERIAL on wo = job and wo_suffix = SUFFIX where job = '016795'
+'and  runId=34288
+
+F.Intrinsic.String.Build("Select Y_SF_WORKORD.*,serial_start From Y_SF_WORKORD left join v_JOB_SERIAL on wo = job and wo_suffix = SUFFIX where RUNID = {0} and seq = '00001'",V.Global.iBIRunID,V.Local.sSql)
+
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Variable.LoadUDTFromRecordset("con","rst","V.uGlobal.uWorkOrder",True,0)
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.If(V.uGlobal.uWorkOrder.UBound,>,-1)
+    'Checking to see if sequence being printed is Codesoft label
+    Function.Intrinsic.Control.If(Variable.Global.bSentinel,=,True)
+        'Stopping Logging
+        F.Global.BI.StopLogging(V.Global.iBILogID)
+
+        'Printing Codesoft label
+        F.Global.BI.PrintCodesoftLabelFromUDT(V.Global.iBIRunID,V.Global.iBILogID,"uGlobal.uWorkOrder","","",True)
+    Function.Intrinsic.Control.Else
+        'Setting field refs of UDT for Z table fields that don't match Y table field names
+        F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uWorkOrder!BIRUNID,"BIRUNID")
+        F.Intrinsic.Variable.SetUDTFieldReference(V.uGlobal.uWorkOrder!CUSTOMER,"CUSTOMER")
+
+        'Opening table and writing data out for Crystal/Bartender
+        F.ODBC.Connection!con.OpenLocalRecordsetRW("rst","Z_SF_WORKORD")
+        F.Intrinsic.Variable.saveudttorecordset("con","rst","v.uglobal.uWorkOrder")
+        F.ODBC.con!rst.Close
+
+        'Stopping Logging
+        F.Global.BI.StopLogging(V.Global.iBILogID)
+
+        'Printing Crystal Report
+        F.Intrinsic.Control.CallSub(Callbi)
+    Function.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+Function.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadData_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+    Function.Intrinsic.String.Concat("Project: BIR_SF_Work_Order_Label.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LoadData.End
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+Variable.Local.sError.Declare(String)
+Variable.Local.iRet.Declare(Long)
+
+Function.Global.BI.RunReportPreProcessor(V.Global.iBIRunID,V.Global.iBILogID,"","","",-1,True,"",-1,"",-1,"","",V.Local.iRet)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+    Function.Intrinsic.String.Concat("Project: BIR_SF_Work_Order_Label.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CallBI.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$$}$11/16/2017 3:51:15 PM$}$False
+Program.Sub.Comments.End
